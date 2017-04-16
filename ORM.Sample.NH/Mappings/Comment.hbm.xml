@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="ORM.Sample.Domain.Entities" assembly="ORM.Sample.Domain" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Comment" lazy="true" table="Comment">
+    <id name="CommentId" column="CommentId" generator="hilo" />
+    <component name="Details">
+      <property name="Fullname" column="FullName" length="50" not-null="true" />
+      <property name="Email" column="Email" length="50" not-null="true" />
+      <property name="Url" column="Url" length="50" not-null="false" />
+    </component>
+    <property name="Timestamp" column="Timestamp" not-null="true" />
+    <property name="Content" type="StringClob" column="Content" length="2000" not-null="true" lazy="true" />
+    <many-to-one name="Post" column="PostId" not-null="true" lazy="no-proxy" />
+  </class>
+</hibernate-mapping>

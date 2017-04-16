@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="ORM.Sample.Domain.Entities" assembly="ORM.Sample.Domain">
+  <class name="Blog" lazy="true" table="Blog">
+    <id name="BlogId" column="BlogId" generator="hilo"></id>
+    <property name="Name" column="Name" length="50" not-null="true"></property>
+    <property name="Creation" column="Creation" not-null="true"></property>
+    <property name ="PostCount" formula="(SELECT COUNT(1) FROM post WHERE post.BlogId = BlogId)"></property>
+    <property name="Picture" column="Picture" not-null="false" lazy="true">
+      <type name="ORM.Sample.NH.Types.ImageUserType, ORM.Sample.NH"></type>
+    </property>
+    <many-to-one name="Owner" column="UserId" not-null="true" lazy="no-proxy" cascade="save-update"></many-to-one>
+    <list cascade="all-delete-orphan" inverse="true" lazy="true" name="Posts">
+      <key column="BlogId"></key>
+      <index column="Number"></index>
+      <one-to-many class="Post"/>
+    </list>
+  </class>
+</hibernate-mapping>

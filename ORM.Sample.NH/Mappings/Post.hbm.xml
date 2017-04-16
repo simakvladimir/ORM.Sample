@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="ORM.Sample.Domain.Entities" assembly="ORM.Sample.Domain" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Post" lazy="true" table="Post">
+    <id name="PostId" column="PostId" generator="hilo" />
+    <property name="Title" column="Title" length="50" not-null="true" />
+    <property name="Timestamp" column="Timestamp" not-null="true" />
+    <property name="Content" type="StringClob" column="Content" length="2000" not-null="true" lazy="true" />
+    <many-to-one name="Blog" column="BlogId" not-null="true" lazy="no-proxy" />
+    <set cascade="all" lazy="false" name="Tags" table="Tag" order-by="Tag">
+      <key column="PostId" not-null="true" />
+      <element column="Tag" type="String" length="20" not-null="true" unique="true" />
+    </set>
+    <set cascade="all-delete-orphan" inverse="true" lazy="true" name="Attachments">
+      <key column="PostId" not-null="true" />
+      <one-to-many class="Attachment" />
+    </set>
+    <bag cascade="all-delete-orphan" inverse="true" lazy="true" name="Comments">
+      <key column="PostId" not-null="true" />
+      <one-to-many class="Comment" />
+    </bag>
+  </class>
+</hibernate-mapping>

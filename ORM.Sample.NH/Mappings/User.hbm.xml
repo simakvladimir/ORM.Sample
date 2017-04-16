@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="ORM.Sample.Domain.Entities" assembly="ORM.Sample.Domain">
+  <class name="User" lazy="true" table="[USER]">
+    <id name="UserId" column="USER_ID">
+      <generator class="native"></generator>
+    </id>
+    <!--
+    <property name="UserName" column="UserName" length="10" not-null="true"></property>
+    <property name="Birthday" column="Birthday" not-null="false"></property>
+    <component name="Details">
+      <property name="Email" column="Email" length="50" not-null="true"></property>
+      <property name="Url" column="Url" length="50" not-null="true"></property>
+    </component>
+    <set cascade="all-delete-orphan" inverse="true" lazy="true" name="Blogs">
+      <key column="UserId"></key>
+      <one-to-many class="Blog"></one-to-many>
+    </set>
+    -->
+  </class>
+</hibernate-mapping>

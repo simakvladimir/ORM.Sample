@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="ORM.Sample.Domain.Entities" assembly="ORM.Sample.Domain" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Attachment" lazy="true" table="Attachment">
+    <id name="AttachmentId" column="AttachmentId" generator="hilo" />
+    <property name="FileName" column="FileName" length="50" not-null="true" />
+    <property name="Timestamp" column="Timestamp" not-null="true" />
+    <property name="Contents" type="BinaryBlob" column="Contents" length="100000" not-null="true" lazy="true" />
+    <many-to-one name="Post" column="PostId" not-null="true" lazy="no-proxy" />
+  </class>
+</hibernate-mapping>

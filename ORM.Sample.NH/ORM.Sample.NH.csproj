@@ -72,9 +72,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ORM.Sample.Infrastructure\ORM.Sample.Infrastructure.csproj">
+    <ProjectReference Include="..\ORM.Sample.Core\ORM.Sample.Core.csproj">
       <Project>{b97dd7d4-7b16-4712-8814-2c6e395f6667}</Project>
-      <Name>ORM.Sample.Infrastructure</Name>
+      <Name>ORM.Sample.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ORM.Sample.Infrastructure
+namespace ORM.Sample.Core.Orm
 {
-    public interface IOrmSession
+    public interface IOrmSessionFactory
     {
         void Close();
-        void Save(object obj);
+        IOrmSession GetNewSession();
     }
 }

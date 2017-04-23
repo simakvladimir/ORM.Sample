@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NHibernate;
-using ORM.Sample.Infrastructure;
+using ORM.Sample.Core.Orm;
 
 namespace ORM.Sample.NH
 {

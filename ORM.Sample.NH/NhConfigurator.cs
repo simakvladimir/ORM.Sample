@@ -9,7 +9,7 @@ using NHibernate.Context;
 using NHibernate.Dialect;
 using NHibernate.Driver;
 using NHibernate.Tool.hbm2ddl;
-using ORM.Sample.Infrastructure;
+using ORM.Sample.Core.Orm;
 
 namespace ORM.Sample.NH
 {
@@ -19,12 +19,8 @@ namespace ORM.Sample.NH
         private Configuration _config;
         public void Configure()
         {
-            // order is important. 1 - configure (read nhibernate.cfg) 2 - add assembly
-            _config = new Configuration()
-                .Configure()
-                .AddAssembly("ORM.Sample.NH");
-
-            new SchemaExport(_config).Execute(true, true, false);
+            ConfigureNH();
+            BuildSchema();
         }
 
         public IOrmSessionFactory BuildSessionFactory()
@@ -32,6 +28,21 @@ namespace ORM.Sample.NH
             return new NhSessionFactory(_config.BuildSessionFactory());
         }
 
+        private void ConfigureNH()
+        {
+            // order is important. 1 - configure (read nhibernate.cfg) 2 - add assembly
+            _config = new Configuration()
+                .Configure()
+                .AddAssembly("ORM.Sample.NH");
+        }
+
+        private void BuildSchema()
+        {
+            if (_config == null) return;
+
+            // update schema
+            new SchemaExport(_config).Execute(true, true, false);
+        }
     }
     
 }

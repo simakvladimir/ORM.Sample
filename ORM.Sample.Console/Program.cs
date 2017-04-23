@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ORM.Sample.Domain.Entities;
-using ORM.Sample.Infrastructure;
+﻿using ORM.Sample.Domain.Entities;
 using ORM.Sample.NH;
+using System;
+using System.Configuration;
+using ORM.Sample.Core.Cfg;
 
 namespace ORM.Sample.Console
 {
@@ -13,6 +10,14 @@ namespace ORM.Sample.Console
     {
         static void Main(string[] args)
         {
+            // connection
+            MainSettingsSection section = (MainSettingsSection)ConfigurationManager.GetSection("main");
+            if (section != null)
+            {
+                System.Console.WriteLine(string.Format("Connection: {0}", section.ConnectionString));
+                System.Console.WriteLine(string.Format("Provider: {0}", section.DbProvider));
+            }
+
             // NH or EF
             var ormConf = new NhConfigurator();
             ormConf.Configure();

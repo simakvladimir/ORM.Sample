@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="ORM.Sample.Domain.Entities" assembly="ORM.Sample.Domain">
-  <class name="User" lazy="true" table="[USER]">
-    <id name="UserId" column="USER_ID">
+  <class name="User" lazy="true" table="[User]">
+    <id name="UserId" column="UserId">
       <generator class="native"></generator>
     </id>
     <!--

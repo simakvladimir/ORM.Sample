@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ORM.Sample.Infrastructure
+namespace ORM.Sample.Core.Db
 {
-    public interface IOrmSessionFactory
+    abstract class DbProvider
     {
-        void Close();
-        IOrmSession GetNewSession();
     }
 }

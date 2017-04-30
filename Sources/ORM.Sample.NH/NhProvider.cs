@@ -9,14 +9,22 @@ using NHibernate.Context;
 using NHibernate.Dialect;
 using NHibernate.Driver;
 using NHibernate.Tool.hbm2ddl;
+using ORM.Sample.Core.Db;
 using ORM.Sample.Core.Orm;
 
 namespace ORM.Sample.NH
 {
     
-    public class NhConfigurator : IOrmConfigurator
+    public class NhProvider : IOrmProvider
     {
         private Configuration _config;
+
+        #region Import
+
+        public IDbProvider DbProvider { get; set; }
+
+        #endregion
+
         public void Configure()
         {
             ConfigureNH();

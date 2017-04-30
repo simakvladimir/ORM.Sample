@@ -1,6 +1,6 @@
 ﻿namespace ORM.Sample.Core.Orm
 {
-    public interface IOrmConfigurator
+    public interface IOrmProvider
     {
         void Configure();
         IOrmSessionFactory BuildSessionFactory();

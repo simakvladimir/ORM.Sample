@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ORM.Sample.Core.Db
 {
-    abstract class DbProvider
+    public abstract class DbProvider : IDbProvider
     {
+        public virtual string Connection { get; set; }
     }
 }

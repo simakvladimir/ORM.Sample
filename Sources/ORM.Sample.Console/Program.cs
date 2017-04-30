@@ -2,7 +2,10 @@
 using ORM.Sample.NH;
 using System;
 using System.Configuration;
+using Autofac;
 using ORM.Sample.Core.Cfg;
+using ORM.Sample.Core;
+using ORM.Sample.Core.Orm;
 
 namespace ORM.Sample.Console
 {
@@ -10,20 +13,17 @@ namespace ORM.Sample.Console
     {
         static void Main(string[] args)
         {
-            // connection
-            MainSettingsSection section = (MainSettingsSection)ConfigurationManager.GetSection("main");
-            if (section != null)
-            {
-                System.Console.WriteLine(string.Format("Connection: {0}", section.ConnectionString));
-                System.Console.WriteLine(string.Format("Provider: {0}", section.DbProvider));
-            }
+            var container = Starter.CreateHostContainer();
 
-            // NH or EF
-            var ormConf = new NhConfigurator();
-            ormConf.Configure();
+            // Db provider
+            
+
+            // Orm provider
+            var ormProvider = container.Resolve<IOrmProvider>();
+            ormProvider.Configure();
 
             // Factory
-            var factory = ormConf.BuildSessionFactory();
+            var factory = ormProvider.BuildSessionFactory();
             
             User user = new User()
             {

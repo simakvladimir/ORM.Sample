@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ORM.Sample.Core.Db
 {
-    interface IDbProvider
+    public interface IDbProvider
     {
+        string Connection { get; set; }
     }
 }

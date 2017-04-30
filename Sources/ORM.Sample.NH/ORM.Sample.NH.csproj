@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B6597FBA-37FB-4B07-BF93-F35E61131856}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{C90906F2-6331-45BE-8847-B7AAB1478DC4}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ORM.Sample.Console</RootNamespace>
-    <AssemblyName>ORM.Sample.Console</AssemblyName>
+    <RootNamespace>ORM.Sample.NH</RootNamespace>
+    <AssemblyName>ORM.Sample.NH</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -33,10 +30,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Iesi.Collections, Version=4.0.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Iesi.Collections.4.0.0.4000\lib\net40\Iesi.Collections.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NHibernate, Version=4.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\NHibernate.4.1.1.4000\lib\net40\NHibernate.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,24 +48,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="NhProvider.cs" />
+    <Compile Include="NhSession.cs" />
+    <Compile Include="NhSessionFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Types\ImageUserType.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="Mappings\Attachment.hbm.xml" />
+    <None Include="Mappings\Blog.hbm.xml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Mappings\Comment.hbm.xml" />
+    <None Include="Mappings\Post.hbm.xml" />
+    <EmbeddedResource Include="Mappings\User.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ORM.Sample.Domain\ORM.Sample.Domain.csproj">
-      <Project>{6f11202e-b1f8-4ac7-90b6-43fbed8df79b}</Project>
-      <Name>ORM.Sample.Domain</Name>
-    </ProjectReference>
+    <Content Include="hibernate.cfg.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\ORM.Sample.Core\ORM.Sample.Core.csproj">
       <Project>{b97dd7d4-7b16-4712-8814-2c6e395f6667}</Project>
       <Name>ORM.Sample.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ORM.Sample.NH\ORM.Sample.NH.csproj">
-      <Project>{c90906f2-6331-45be-8847-b7aab1478dc4}</Project>
-      <Name>ORM.Sample.NH</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -9,5 +9,7 @@ namespace ORM.Sample.Core.Db
     public interface IDbProvider
     {
         string Connection { get; set; }
+
+        void Configure();
     }
 }

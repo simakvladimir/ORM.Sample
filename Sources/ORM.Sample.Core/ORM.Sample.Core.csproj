@@ -48,6 +48,8 @@
     <Compile Include="Cfg\MainSettingsSection.cs" />
     <Compile Include="Db\DbProvider.cs" />
     <Compile Include="Db\IDbProvider.cs" />
+    <Compile Include="DefaultHost.cs" />
+    <Compile Include="IHost.cs" />
     <Compile Include="Orm\IOrmConfigurator.cs" />
     <Compile Include="Orm\IOrmSession.cs" />
     <Compile Include="Orm\IOrmSessionFactory.cs" />

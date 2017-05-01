@@ -19,7 +19,7 @@ namespace ORM.Sample.NH
     {
         private Configuration _config;
 
-        #region Import
+        #region Imported
 
         public IDbProvider DbProvider { get; set; }
 
@@ -27,7 +27,7 @@ namespace ORM.Sample.NH
 
         public void Configure()
         {
-            ConfigureNH();
+            ConfigureNh();
             BuildSchema();
         }
 
@@ -36,7 +36,7 @@ namespace ORM.Sample.NH
             return new NhSessionFactory(_config.BuildSessionFactory());
         }
 
-        private void ConfigureNH()
+        private void ConfigureNh()
         {
             // order is important. 1 - configure (read nhibernate.cfg) 2 - add assembly
             _config = new Configuration()

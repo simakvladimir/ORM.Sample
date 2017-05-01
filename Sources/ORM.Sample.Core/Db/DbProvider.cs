@@ -9,5 +9,9 @@ namespace ORM.Sample.Core.Db
     public abstract class DbProvider : IDbProvider
     {
         public virtual string Connection { get; set; }
+
+        public virtual void Configure()
+        {
+        }
     }
 }

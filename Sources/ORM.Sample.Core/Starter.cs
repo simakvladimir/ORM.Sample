@@ -12,6 +12,8 @@ namespace ORM.Sample.Core
         {
             var builder = new ContainerBuilder();
 
+            builder.RegisterType<DefaultHost>().As<IHost>();
+        
             // read settings
             MainSettingsSection section = (MainSettingsSection)ConfigurationManager.GetSection("main");
             if (section != null)

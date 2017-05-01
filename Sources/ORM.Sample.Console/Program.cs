@@ -14,13 +14,11 @@ namespace ORM.Sample.Console
         static void Main(string[] args)
         {
             var container = Starter.CreateHostContainer();
-
-            // Db provider
-            
+            var host = container.Resolve<IHost>();
+             host.Initialize();
 
             // Orm provider
             var ormProvider = container.Resolve<IOrmProvider>();
-            ormProvider.Configure();
 
             // Factory
             var factory = ormProvider.BuildSessionFactory();

@@ -35,6 +35,7 @@ namespace ORM.Sample.Console
 
             factory.Close();
 
+            System.Console.WriteLine("Press any key...");
             System.Console.ReadKey();
         }
     }

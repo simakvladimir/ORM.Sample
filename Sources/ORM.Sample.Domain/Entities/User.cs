@@ -7,18 +7,20 @@ namespace ORM.Sample.Domain.Entities
     {
         public User()
         {
-            Blogs = new HashSet<Blog>();
-            Details = new UserDetail();
+            //Blogs = new HashSet<Blog>();
+            //Details = new UserDetail();
         }
 
         public virtual int UserId { get; protected set; }
 
         public virtual string UserName { get; set; }
 
+        /*
         public virtual UserDetail Details { get; set; }
 
         public virtual DateTime? Bithdate { get; set; }
 
         public virtual ISet<Blog> Blogs { get; protected set; }
+        */
     }
 }

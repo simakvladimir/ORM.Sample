@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B6597FBA-37FB-4B07-BF93-F35E61131856}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{B5DF8C26-0443-476A-A684-D08DCBA77F1C}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ORM.Sample.Console</RootNamespace>
-    <AssemblyName>ORM.Sample.Console</AssemblyName>
+    <RootNamespace>ORM.Sample.EF</RootNamespace>
+    <AssemblyName>ORM.Sample.EF</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -33,23 +30,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Autofac, Version=4.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Autofac.4.5.0\lib\net45\Autofac.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -58,34 +49,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Context\DomainContext.cs" />
+    <Compile Include="EfProvider.cs" />
+    <Compile Include="EfSession.cs" />
+    <Compile Include="EfSessionFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Sources\ORM.Sample.Core\ORM.Sample.Core.csproj">
+      <Project>{b97dd7d4-7b16-4712-8814-2c6e395f6667}</Project>
+      <Name>ORM.Sample.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sources\ORM.Sample.Domain\ORM.Sample.Domain.csproj">
+      <Project>{6f11202e-b1f8-4ac7-90b6-43fbed8df79b}</Project>
+      <Name>ORM.Sample.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\ORM.Sample.EF\ORM.Sample.EF.csproj">
-      <Project>{b5df8c26-0443-476a-a684-d08dcba77f1c}</Project>
-      <Name>ORM.Sample.EF</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ORM.Sample.Domain\ORM.Sample.Domain.csproj">
-      <Project>{6f11202e-b1f8-4ac7-90b6-43fbed8df79b}</Project>
-      <Name>ORM.Sample.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ORM.Sample.Core\ORM.Sample.Core.csproj">
-      <Project>{b97dd7d4-7b16-4712-8814-2c6e395f6667}</Project>
-      <Name>ORM.Sample.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ORM.Sample.MSSQL\ORM.Sample.MSSQL.csproj">
-      <Project>{d02b89cd-8952-44b2-9f10-a1c173f945fd}</Project>
-      <Name>ORM.Sample.MSSQL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ORM.Sample.NH\ORM.Sample.NH.csproj">
-      <Project>{c90906f2-6331-45be-8847-b7aab1478dc4}</Project>
-      <Name>ORM.Sample.NH</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
